@@ -1,0 +1,9 @@
+import Kourovka.Aristotle.Problem_18_50
+import Kourovka.Aristotle.Problem_19_25
+import Kourovka.Aristotle.Problem_20_125
+import Kourovka.Aristotle.Problem_21_147
+import Kourovka.Aristotle.Problem_21_149
+import Kourovka.Aristotle.Problem_21_150
+import Kourovka.Aristotle.Problem_21_24
+import Kourovka.Aristotle.Problem_21_8
+import Kourovka.Aristotle.Problem_3_46

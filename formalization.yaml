@@ -1,0 +1,205 @@
+# formalization.yaml (v0.3): repo-root metadata for formalization projects.
+# Requiredness/conformance:
+#   - Fields marked [required] should be present and filled.
+#   - Fields not marked [required] are examples/recommended metadata only; they may be omitted.
+#   - Projects may add extra YAML keys at any level. Readers should tolerate unknown keys.
+# This is a lightweight reporting schema, not a closed validation schema.
+
+version: "v0.3"
+
+# project - the formalization itself (not the source).
+project:
+  name: "Kourovka"             # [required]
+  authors: ["Wouter van Doorn", "Elias Judin", "Pietro Monticone", "Daniel Morrison"] # [required] who did the formalization
+  license: "Apache-2.0"        # [required]
+  repository: "https://github.com/pitmonticone/Kourovka"
+  lean_version: "v4.28.0"
+  mathlib_revision: "8f9d9cff6bd728b17a24e163c9402775d9e6a365"
+
+# sources - what was formalized. List of papers/textbooks/blueprints/etc.
+sources:                       # [required] list of sources
+  - title: "Unsolved Problems in Group Theory. The Kourovka Notebook"
+    authors: ["E. I. Khukhro", "V. D. Mazurov"]
+    id: "arXiv:1401.0300v45"
+    type: "problem collection"
+    license: "arXiv.org perpetual, non-exclusive license 1.0"
+    author_contacted: "yes"
+    note: >
+      Version 45 contains the current problem statements and records the accepted
+      solutions to Problems 3.46, 18.50, 19.25, 20.125, 21.8, 21.24, 21.147,
+      and 21.150. Problem 21.149 now asks the strengthened question about
+      conjugation by elements of a possibly larger Dlab group, which remains open.
+  - title: "Unsolved Problems in Group Theory. The Kourovka Notebook"
+    authors: ["E. I. Khukhro", "V. D. Mazurov"]
+    id: "arXiv:1401.0300v43"
+    type: "problem collection"
+    license: "arXiv.org perpetual, non-exclusive license 1.0"
+    author_contacted: "yes"
+    note: >
+      Version 43 preserves the original formulation of Problem 21.149, asking
+      whether a Dlab group can have a non-inner order automorphism. The Lean
+      development answers this question affirmatively. After review, the intended
+      stronger question was recorded in version 45 and remains open.
+  - title: "On Some Problems from the Kourovka Notebook"
+    authors: ["Wouter van Doorn", "Elias Judin", "Pietro Monticone", "Daniel Morrison"]
+    id: "pending"
+    type: "preprint"
+    license: "arXiv.org perpetual, non-exclusive license 1.0 (planned)"
+    author_contacted: "n/a"
+    note: >
+      Companion informal account of the formal results. Its arXiv identifier and
+      planned licence metadata will be updated upon submission.
+
+# project status
+status:
+  scope: >
+    Formal Lean developments for the accepted solutions to Kourovka Notebook
+    Problems 3.46, 18.50, 19.25, 20.125, 21.8, 21.24, 21.147, and 21.150,
+    together with a solution to the original version 43 formulation of Problem
+    21.149. The strengthened version 45 formulation of Problem 21.149 remains
+    open. The sorry counts cover the curated Kourovka root and its dependencies.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound", "Lean.ofReduceBool", "Lean.trustCompiler"]
+  main_results:                # list the main results of the project
+  - declaration: "kourovka_3_46"
+    file: "Kourovka/Problem_3_46.lean"
+    sorry_count: 0
+    axioms: ["propext", "Classical.choice", "Quot.sound"]
+  - declaration: "kourovka_18_50"
+    file: "Kourovka/Problem_18_50.lean"
+    sorry_count: 0
+    axioms: ["propext", "Classical.choice", "Quot.sound"]
+  - declaration: "kourovka_19_25"
+    file: "Kourovka/Problem_19_25.lean"
+    sorry_count: 0
+    axioms: ["propext", "Classical.choice", "Quot.sound"]
+  - declaration: "kourovka_20_125"
+    file: "Kourovka/Problem_20_125.lean"
+    sorry_count: 0
+    axioms: ["propext", "Classical.choice", "Quot.sound"]
+  - declaration: "kourovka_21_8"
+    file: "Kourovka/Problem_21_8.lean"
+    sorry_count: 0
+    axioms: ["propext", "Classical.choice", "Quot.sound", "Lean.ofReduceBool", "Lean.trustCompiler"]
+  - declaration: "kourovka_21_24"
+    file: "Kourovka/Problem_21_24.lean"
+    sorry_count: 0
+    axioms: ["propext", "Classical.choice", "Quot.sound"]
+  - declaration: "kourovka_21_147"
+    file: "Kourovka/Problem_21_147.lean"
+    sorry_count: 0
+    axioms: ["propext", "Classical.choice", "Quot.sound"]
+  - declaration: "kourovka_21_149"
+    file: "Kourovka/Problem_21_149.lean"
+    sorry_count: 0
+    axioms: ["propext", "Classical.choice", "Quot.sound"]
+  - declaration: "kourovka_21_150"
+    file: "Kourovka/Problem_21_150.lean"
+    sorry_count: 0
+    axioms: ["propext", "Classical.choice", "Quot.sound", "Lean.ofReduceBool", "Lean.trustCompiler"]
+
+# how it was produced. Extra per-entry fields are allowed.
+automation:                    # [required]
+  methods:                     # one entry per distinct phase/run/tool
+    - method: "autonomous"
+      models: ["Aristotle (Harmonic)"]
+      framework: "Aristotle CLI"
+      tool_setup: >
+        Lean projects were submitted through the Aristotle CLI, with
+        iterative follow-up instructions and local verification using Lake.
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "not tracked"
+        hardware: "API-only; provider hardware undisclosed"
+      prompting_notes: "See the companion paper for details."
+    - method: "agent"
+      models: ["Aristotle (Harmonic)"]
+      framework: "Aristotle CLI"
+      tool_setup: >
+        Targeted Aristotle runs assisted with extraction, generalisation,
+        refactoring, documentation, and proof cleanup, followed by human review.
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "not tracked"
+        hardware: "API-only; provider hardware undisclosed"
+      prompting_notes: >
+        Prompts requested reusable generalisations, clearer organisation and
+        documentation, and concise proofs following Mathlib conventions.
+    - method: "manual"
+      models: []
+  notes: >
+    This section covers mathematical proof discovery and substantive formal
+    canonisation. Aristotle produced the proof strategies, mathematical
+    arguments, and initial formal solutions. The human authors selected the
+    problems, checked the intended formal statements, reviewed the results, and
+    prepared the work for publication. Canonisation combined manual work with
+    further Aristotle runs.
+
+# fidelity
+fidelity:
+  divergences: >
+    `kourovka_21_149` proves the original formulation recorded in version 43 of
+    the Kourovka Notebook: the existence of a non-inner order automorphism of a
+    Dlab group. Version 45 asks whether such an automorphism can fail to be
+    induced by conjugation in any possibly larger Dlab group. That strengthened
+    question is not proved here and remains open.
+
+# review status
+review:
+  status: "author-verified"
+  reviewers: ["Wouter van Doorn", "Elias Judin", "Pietro Monticone", "Daniel Morrison"]
+  notes: >
+    The four authors verified the current formalization. Kourovka Notebook editors, problem proposers,
+    and other reviewers examined the mathematical solutions and informal
+    submissions.
+
+# alignment - freeform YAML describing how source statements map to formal declarations.
+# The structured table below is only a suggested shape; replace or extend it as useful.
+alignment:
+  namespace: "_root_"
+  statements:
+    - source: "Kourovka Notebook v45, Problem 3.46"
+      lean: "kourovka_3_46"
+      module: "Kourovka.Problem_3_46"
+      status: "proved"
+    - source: "Kourovka Notebook v45, Problem 18.50"
+      lean: "kourovka_18_50"
+      module: "Kourovka.Problem_18_50"
+      status: "proved"
+    - source: "Kourovka Notebook v45, Problem 19.25"
+      lean: "kourovka_19_25"
+      module: "Kourovka.Problem_19_25"
+      status: "proved"
+    - source: "Kourovka Notebook v45, Problem 20.125"
+      lean: "kourovka_20_125"
+      module: "Kourovka.Problem_20_125"
+      status: "proved"
+    - source: "Kourovka Notebook v45, Problem 21.8"
+      lean: "kourovka_21_8"
+      module: "Kourovka.Problem_21_8"
+      status: "proved"
+    - source: "Kourovka Notebook v45, Problem 21.24"
+      lean: "kourovka_21_24"
+      module: "Kourovka.Problem_21_24"
+      status: "proved"
+    - source: "Kourovka Notebook v45, Problem 21.147"
+      lean: "kourovka_21_147"
+      module: "Kourovka.Problem_21_147"
+      status: "proved"
+    - source: "Kourovka Notebook v43, Problem 21.149"
+      lean: "kourovka_21_149"
+      module: "Kourovka.Problem_21_149"
+      status: "proved"
+      note: >
+        This declaration proves the original version 43 formulation, not the
+        strengthened version 45 formulation.
+    - source: "Kourovka Notebook v45, Problem 21.150"
+      lean: "kourovka_21_150"
+      module: "Kourovka.Problem_21_150"
+      status: "proved"
+
+# acknowledgements - optional credits for libraries, tools, discussions, etc.
+acknowledgements: >
+  We thank Lean community and Mathlib contributors for the underlying formal infrastructure, and the
+  Kourovka Notebook editors, problem proposers, and reviewers for examining the informal solutions.

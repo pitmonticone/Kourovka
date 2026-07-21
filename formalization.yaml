@@ -42,13 +42,11 @@ sources:                       # [required] list of sources
       stronger question was recorded in version 45 and remains open.
   - title: "On Some Problems from the Kourovka Notebook"
     authors: ["Wouter van Doorn", "Elias Judin", "Pietro Monticone", "Daniel Morrison"]
-    id: "pending"
+    id: "arXiv:2607.17477"
     type: "preprint"
-    license: "arXiv.org perpetual, non-exclusive license 1.0 (planned)"
+    license: "arXiv.org perpetual, non-exclusive license 1.0"
     author_contacted: "n/a"
-    note: >
-      Companion informal account of the formal results. Its arXiv identifier and
-      planned licence metadata will be updated upon submission.
+    note: "Companion informal account of the formal results."
 
 # project status
 status:

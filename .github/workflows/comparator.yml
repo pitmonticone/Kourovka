@@ -1,0 +1,74 @@
+name: Comparator
+
+# Checks that Kourovka.Problem_18_50 proves the statement in Challenge.lean.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.lean'
+      - 'lean-toolchain'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - 'comparator.json'
+      - 'scripts/**'
+      - 'test/**'
+      - '.github/workflows/comparator.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**/*.lean'
+      - 'lean-toolchain'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - 'comparator.json'
+      - 'scripts/**'
+      - 'test/**'
+      - '.github/workflows/comparator.yml'
+  workflow_dispatch: # Allow manual triggering of the workflow from the GitHub Actions interface
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  sandbox:
+    runs-on: ubuntu-latest
+    name: Check the Landrun wrapper's flag policy
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Test the Landrun wrapper
+        run: ./test/landrun_wrapper_test.sh
+
+  comparator:
+    runs-on: ubuntu-latest
+    name: Check statement against solution
+    timeout-minutes: 60
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Install and configure Lean
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9 # v1.5.0
+        with:
+          build: false
+
+      - name: Install Go for Landrun
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: '1.24.0'
+          cache: false
+
+      - name: Run pinned Comparator toolchain
+        run: ./scripts/verify-comparator.sh

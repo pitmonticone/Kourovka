@@ -1,52 +1,75 @@
-# formalization.yaml (v0.3): repo-root metadata for formalization projects.
+# formalization.yaml (v0.4): repo-root metadata for formalization projects.
 # Requiredness/conformance:
 #   - Fields marked [required] should be present and filled.
 #   - Fields not marked [required] are examples/recommended metadata only; they may be omitted.
 #   - Projects may add extra YAML keys at any level. Readers should tolerate unknown keys.
 # This is a lightweight reporting schema, not a closed validation schema.
 
-version: "v0.3"
+version: "v0.4"
 
 # project - the formalization itself (not the source).
 project:
   name: "Kourovka"             # [required]
   authors: ["Wouter van Doorn", "Elias Judin", "Pietro Monticone", "Daniel Morrison"] # [required] who did the formalization
+  responsible_maintainers: ["Pietro Monticone"] # [required]
   license: "Apache-2.0"        # [required]
   repository: "https://github.com/pitmonticone/Kourovka"
   lean_version: "v4.28.0"
   mathlib_revision: "8f9d9cff6bd728b17a24e163c9402775d9e6a365"
 
+# classification - the mathematics of the nine results, not the use of Lean.
+classification:
+  arxiv: ["math.GR", "math.CO"]
+  msc2020: ["20E25", "20E22", "20D60", "17B38", "20B30", "05C25", "20F60", "20D15"]
+
 # sources - what was formalized. List of papers/textbooks/blueprints/etc.
 sources:                       # [required] list of sources
-  - title: "Unsolved Problems in Group Theory. The Kourovka Notebook"
-    authors: ["E. I. Khukhro", "V. D. Mazurov"]
-    id: "arXiv:1401.0300v45"
-    type: "problem collection"
+  - title: "On Some Problems from the Kourovka Notebook"
+    authors: ["Wouter van Doorn", "Elias Judin", "Pietro Monticone", "Daniel Morrison"]
+    id: "arXiv:2607.17477"
+    type: "original-proof"
+    relationship: "other"
     license: "arXiv.org perpetual, non-exclusive license 1.0"
-    author_contacted: "yes"
     note: >
+      Companion informal account, presenting solutions to eight problems. The repository
+      additionally contains `kourovka_21_149`, which answers the version 43 formulation.
+      All are first presented by this work: Aristotle produced them in Lean, and the
+      informal write-ups were made from the formal proofs afterwards.
+  - title: "Unsolved Problems in Group Theory. The Kourovka Notebook"
+    authors: ["Evgeny I. Khukhro", "Victor D. Mazurov"]
+    id: "arXiv:1401.0300v45"
+    type: "paper"
+    relationship: "other"
+    license: "arXiv.org perpetual, non-exclusive license 1.0"
+    author_endorsement: "endorsed"
+    note: >
+      Khukhro and Mazurov are the editors of this collection.
+      v0.4 has no `editors` field, so they appear under `authors`. Each
+      problem has its own proposer, named in the Notebook.
+
       Version 45 contains the current problem statements and records the accepted
       solutions to Problems 3.46, 18.50, 19.25, 20.125, 21.8, 21.24, 21.147,
       and 21.150. Problem 21.149 now asks the strengthened question about
       conjugation by elements of a possibly larger Dlab group, which remains open.
+
+      `author_endorsement` records the editors accepting these solutions into issue 21.
+      The relationship is `other` because version 45 both poses the problems and records
+      the accepted solutions, which is not the contextual role `background` describes.
   - title: "Unsolved Problems in Group Theory. The Kourovka Notebook"
-    authors: ["E. I. Khukhro", "V. D. Mazurov"]
+    authors: ["Evgeny I. Khukhro", "Victor D. Mazurov"]
     id: "arXiv:1401.0300v43"
-    type: "problem collection"
+    type: "paper"
+    relationship: "background"
     license: "arXiv.org perpetual, non-exclusive license 1.0"
-    author_contacted: "yes"
+    author_endorsement: "endorsed"
     note: >
       Version 43 preserves the original formulation of Problem 21.149, asking
       whether a Dlab group can have a non-inner order automorphism. The Lean
       development answers this question affirmatively. After review, the intended
       stronger question was recorded in version 45 and remains open.
-  - title: "On Some Problems from the Kourovka Notebook"
-    authors: ["Wouter van Doorn", "Elias Judin", "Pietro Monticone", "Daniel Morrison"]
-    id: "arXiv:2607.17477"
-    type: "preprint"
-    license: "arXiv.org perpetual, non-exclusive license 1.0"
-    author_contacted: "n/a"
-    note: "Companion informal account of the formal results."
+
+# related_formalizations - prior or parallel formalizations, if known.
+related_formalizations: []
 
 # project status
 status:
@@ -68,6 +91,10 @@ status:
     file: "Kourovka/Problem_18_50.lean"
     sorry_count: 0
     axioms: ["propext", "Classical.choice", "Quot.sound"]
+    comparator_config: "comparator.json"
+    note: >
+      The per-result record for the Palomar submission is
+      `Palomar/Problem_18_50/formalization.yaml`.
   - declaration: "kourovka_19_25"
     file: "Kourovka/Problem_19_25.lean"
     sorry_count: 0

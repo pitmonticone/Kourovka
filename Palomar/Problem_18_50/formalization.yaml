@@ -1,0 +1,199 @@
+# formalization.yaml (v0.4): the per-result record for the Palomar submission of
+# `kourovka_18_50`. The repository-level record, covering all nine results, is the
+# `formalization.yaml` at the repository root.
+
+version: "v0.4"
+
+project:
+  name: "Kourovka Notebook Problem 18.50"
+  authors: ["Wouter van Doorn", "Elias Judin", "Pietro Monticone", "Daniel Morrison"]
+  responsible_maintainers: ["Pietro Monticone"]
+  license: "Apache-2.0"
+  repository: "https://github.com/pitmonticone/Kourovka"
+  lean_version: "v4.28.0"
+  mathlib_revision: "8f9d9cff6bd728b17a24e163c9402775d9e6a365"
+  short_description: >
+    For every `n` and every `k` with `1 ≤ k ≤ n!`, a group with `n` pairwise distinct elements
+    whose `n!` permuted products take exactly `k` distinct values. Discovered and formalized in
+    Lean by Aristotle, a formal reasoning agent developed by Harmonic.
+
+# classification - the mathematics of this result, not the use of Lean.
+classification:
+  arxiv: ["math.GR", "math.CO"]
+  msc2020: ["20E22", "05A05", "20F18"]
+
+sources:
+  - title: "Permuted product sets of prescribed cardinality (solution to Kourovka Notebook Problem 18.50)"
+    authors: ["Wouter van Doorn", "Elias Judin", "Pietro Monticone", "Daniel Morrison"]
+    id: "arXiv:2607.17477"
+    type: "original-proof"
+    location: "Section 3"
+    relationship: "other"
+    note: >
+      The result compared by `comparator.json` as `kourovka_18_50`. The title above names the
+      result; the citable informal presentation is Section 3 of "On Some Problems from the
+      Kourovka Notebook", arXiv:2607.17477 version 2, 26 July 2026.
+
+      It is first presented by this work: Aristotle produced the construction and the Lean proof,
+      and the informal account was written from that proof rather than the other way round.
+      The Kourovka Notebook listed the problem as open until this solution was accepted into issue
+      21, and that its proposer accepted the construction on his own MathOverflow thread.
+  - title: "Unsolved Problems in Group Theory. The Kourovka Notebook"
+    authors: ["Evgeny I. Khukhro", "Victor D. Mazurov"]
+    id: "arXiv:1401.0300v45"
+    type: "paper"
+    location: "Problem 18.50"
+    relationship: "other"
+    license: "arXiv.org perpetual, non-exclusive license 1.0"
+    author_endorsement: "endorsed"
+    note: >
+      Problem 18.50 was proposed by Stefan Kohl. Khukhro and Mazurov are the editors of the
+      collection, not the author of the problem nor authors of its solution; v0.4 has no
+      `editors` field, so they appear under `authors`.
+
+      The relationship is `other` rather than `background` because version 45 does more than
+      supply context: it both poses the problem and records the accepted solution. The closed
+      vocabulary has no category for a source that poses the problem a result answers.
+
+      `author_endorsement` records the editors accepting this solution into issue 21. What a
+      reader can check is the version 45 entry and the solution note in the Notebook's preprint
+      repository; the correspondence itself is private and cannot be independently confirmed.
+  - title: "Numbers of distinct products obtained by permuting the factors"
+    authors: ["Stefan Kohl"]
+    id: "https://mathoverflow.net/q/123890"
+    type: "web discussion"
+    location: "answer 511354"
+    relationship: "other"
+    author_endorsement: "endorsed"
+    note: >
+      Where Kohl, the proposer of Problem 18.50, first raised the question, on 7 March 2013. He
+      reported confirming it computationally for small `n` and later noted that it would appear
+      in the eighteenth issue of the Notebook.
+
+      On 16 May 2026 Kohl posted the construction formalized here as answer 511354 and accepted
+      it on his own question, opening "The answer is affirmative, as reported by Pietro Monticone
+      on May 16, 2026" with a pointer to the Notebook's preprint repository.
+  - title: "Kourovka Notebook Problem 18.50"
+    authors: ["Pietro Monticone"]
+    id: "https://kourovkanotebookorg.wordpress.com/wp-content/uploads/2026/05/18_50.pdf"
+    type: "paper"
+    relationship: "other"
+    note: >
+      The informal solution note submitted to the Kourovka Notebook on 16 May 2026 and published
+      in its preprint repository. This is the authors' own write-up of the present result, made
+      from the Lean proof.
+
+# related_formalizations - prior or parallel formalizations, if known.
+related_formalizations: []
+
+status:
+  scope: >
+    The single result `kourovka_18_50`, stated for audit in `Challenge.lean` and proved in
+    `Kourovka/Problem_18_50.lean`. The repository contains eight further results, recorded in the
+    repository-root `formalization.yaml` and not part of this submission.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+  main_results:
+  - declaration: "kourovka_18_50"
+    file: "Kourovka/Problem_18_50.lean"
+    sorry_count: 0
+    axioms: ["propext", "Classical.choice", "Quot.sound"]
+    comparator_config: "comparator.json"
+    note: >
+      `Challenge.lean` states the theorem from Mathlib alone and `Kourovka/Problem_18_50.lean` is
+      the Solution module that proves it, so the compared name is the same `kourovka_18_50` the
+      repository and the preprint refer to. There is no separate `Solution.lean`: the Solution
+      module is the development itself.
+
+automation:
+  methods:
+    - method: "autonomous"
+      models: ["Aristotle (Harmonic)"]
+      framework: "Aristotle CLI"
+      tool_setup: >
+        The construction and the proof were produced by Aristotle, submitted through the
+        Aristotle CLI, with iterative follow-up instructions and local verification using Lake.
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "not tracked"
+        hardware: "API-only; provider hardware undisclosed"
+      prompting_notes: "See the companion paper for details."
+    - method: "agent"
+      models: ["Aristotle (Harmonic)"]
+      framework: "Aristotle CLI"
+      tool_setup: >
+        Targeted Aristotle runs assisted with extraction, generalisation, refactoring,
+        documentation, and proof cleanup, followed by human review.
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "not tracked"
+        hardware: "API-only; provider hardware undisclosed"
+      prompting_notes: >
+        Prompts requested reusable generalisations, clearer organisation and documentation, and
+        concise proofs following Mathlib conventions.
+    - method: "manual"
+      models: []
+      tool_setup: >
+        Human selection of the problem, review of the formal statement, informalisation of the
+        formal proof, and preparation for publication.
+  notes: >
+    Aristotle produced the proof strategy, the mathematical argument, and the initial formal
+    solution. The human authors selected the problem, checked that the formal statement says what
+    was intended, reviewed the result, and prepared it for publication.
+
+    On attribution: `project.authors` lists the four human authors, matching the companion
+    preprint, and Aristotle's role is recorded here rather than there. The copyright headers of
+    the Lean sources additionally name "Aristotle (Harmonic)" among the authors of each file,
+    because Aristotle wrote the proofs those files contain. Both describe the same division of
+    work.
+
+fidelity:
+  divergences: >
+    `Challenge.lean` contains one deliberate `sorry`, standing for the proof supplied by the
+    Solution module. `comparator.json` declares no `definition_names`, so nothing in the statement
+    is left for the solution to instantiate. The compared theorem depends on exactly `propext`,
+    `Classical.choice` and `Quot.sound`; the wider axiom list in the repository-root record exists
+    only because `kourovka_21_8` and `kourovka_21_150` use `native_decide`, and neither of those
+    is in the axiom closure of `kourovka_18_50`.
+
+    Two presentational differences between the formal statement and the informal account, neither
+    of which changes the claim. Indices run from `0` in Lean and from `1` in the paper, including
+    inside the cocycle, where the paper's coefficient `(j-1)!` with `j` from `1` is the Lean `j !`
+    with `j : Fin n` from `0`. The formal statement also supplies a `DecidableEq` instance for the
+    witness group, which is what lets the set of permuted products be formed as a `Finset` image;
+    it is produced with the witness rather than assumed of an arbitrary group, so it is not a
+    hypothesis on the problem.
+
+    The informal proof in the companion paper sorts words by swapping adjacent inverted pairs. The
+    Lean proof does not: it computes the central coordinate of a permuted product as a sum of
+    pairwise cocycle values (`list_prod_cent_zero`), identifies that sum with the factorial rank
+    (`pairwiseB_eq_factRank`), and counts the image (`products_card`). No commutator is formed
+    anywhere. The two arguments agree; this paragraph describes the formalized one.
+
+review:
+  status: "author-verified"
+  reviewers: ["Wouter van Doorn", "Elias Judin", "Pietro Monticone", "Daniel Morrison"]
+  notes: >
+    The four authors reviewed the formalization. No further independent human review of the Lean
+    formalisation was performed.
+
+    Separately, and of the informal solution rather than the Lean, this result was reviewed
+    through the Kourovka Notebook: the editors accepted it into issue 21, and the problem's
+    proposer, Stefan Kohl, has publicly recorded and accepted the construction on his own
+    MathOverflow thread. That is review of the mathematics, not of the formalization.
+
+alignment:
+  namespace: "_root_"
+  statements:
+    - source: "Kourovka Notebook v45, Problem 18.50"
+      lean: "kourovka_18_50"
+      module: "Kourovka.Problem_18_50"
+      status: "proved"
+      note: >
+        Stated for audit in `Challenge.lean` using Mathlib alone, and compared by
+        `comparator.json` against the proof in `Kourovka.Problem_18_50`.
+
+acknowledgements: >
+  We thank Lean community and Mathlib contributors for the underlying formal infrastructure, and
+  Stefan Kohl and the Kourovka Notebook editors for examining the informal solution.

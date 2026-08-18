@@ -10,6 +10,20 @@ version: "v0.4"
 # project - the formalization itself (not the source).
 project:
   name: "Kourovka"             # [required]
+  description: >               # [required]
+    Formal Lean proofs of nine problems from the Kourovka Notebook, the standard collection of
+    open problems in group theory. Eight are the solutions accepted into issue 21: a group with
+    exactly two maximal locally soluble normal subgroups (3.46); for every k with 1 ≤ k ≤ n!, a
+    group containing n distinct elements whose permuted products take exactly k values (18.50);
+    a simple and a non-simple group of order 6048 with the same totient sum (19.25); a surjective,
+    non-injective Rota-Baxter operator on a non-abelian group (20.125); for k ≥ 4, the horizontal
+    class transpositions of moduli at most k generating a group isomorphic to the symmetric group
+    on lcm(2, …, k) letters (21.8); chordality of every cograph power graph of a finite group
+    (21.24); right-relatively convex subgroups of a right-orderable group that do not form a
+    sublattice (21.147); and a p-group G = A ⋊ B with A and B elementary abelian and C_B(a) = 1
+    in which H = ⟨a, B⟩ satisfies rank(Z(H) ∩ H′) > rank(B) (21.150). The ninth gives a non-inner
+    order automorphism of a Dlab group, answering the original version 43 formulation of Problem
+    21.149; the strengthened version 45 formulation remains open.
   authors: ["Wouter van Doorn", "Elias Judin", "Pietro Monticone", "Daniel Morrison"] # [required] who did the formalization
   responsible_maintainers: ["Pietro Monticone"] # [required]
   license: "Apache-2.0"        # [required]
@@ -36,16 +50,19 @@ sources:                       # [required] list of sources
       All are first presented by this work: Aristotle produced them in Lean, and the
       informal write-ups were made from the formal proofs afterwards.
   - title: "Unsolved Problems in Group Theory. The Kourovka Notebook"
-    authors: ["Evgeny I. Khukhro", "Victor D. Mazurov"]
+    contributors:
+      - name: "Evgeny I. Khukhro"
+        role: "editor"
+      - name: "Victor D. Mazurov"
+        role: "editor"
     id: "arXiv:1401.0300v45"
     type: "paper"
     relationship: "other"
     license: "arXiv.org perpetual, non-exclusive license 1.0"
     author_endorsement: "endorsed"
     note: >
-      Khukhro and Mazurov are the editors of this collection.
-      v0.4 has no `editors` field, so they appear under `authors`. Each
-      problem has its own proposer, named in the Notebook.
+      Khukhro and Mazurov edit this collection rather than author its problems.
+      Each problem has its own proposer, named in the Notebook.
 
       Version 45 contains the current problem statements and records the accepted
       solutions to Problems 3.46, 18.50, 19.25, 20.125, 21.8, 21.24, 21.147,
@@ -56,7 +73,11 @@ sources:                       # [required] list of sources
       The relationship is `other` because version 45 both poses the problems and records
       the accepted solutions, which is not the contextual role `background` describes.
   - title: "Unsolved Problems in Group Theory. The Kourovka Notebook"
-    authors: ["Evgeny I. Khukhro", "Victor D. Mazurov"]
+    contributors:
+      - name: "Evgeny I. Khukhro"
+        role: "editor"
+      - name: "Victor D. Mazurov"
+        role: "editor"
     id: "arXiv:1401.0300v43"
     type: "paper"
     relationship: "background"

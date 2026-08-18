@@ -6,16 +6,16 @@ version: "v0.4"
 
 project:
   name: "Kourovka Notebook Problem 18.50"
+  description: >
+    For every n and every k with 1 ≤ k ≤ n!, a group with n pairwise distinct elements whose n!
+    permuted products take exactly k distinct values. Discovered and formalized in Lean by
+    Aristotle, a formal reasoning agent developed by Harmonic.
   authors: ["Wouter van Doorn", "Elias Judin", "Pietro Monticone", "Daniel Morrison"]
   responsible_maintainers: ["Pietro Monticone"]
   license: "Apache-2.0"
   repository: "https://github.com/pitmonticone/Kourovka"
   lean_version: "v4.28.0"
   mathlib_revision: "8f9d9cff6bd728b17a24e163c9402775d9e6a365"
-  short_description: >
-    For every `n` and every `k` with `1 ≤ k ≤ n!`, a group with `n` pairwise distinct elements
-    whose `n!` permuted products take exactly `k` distinct values. Discovered and formalized in
-    Lean by Aristotle, a formal reasoning agent developed by Harmonic.
 
 # classification - the mathematics of this result, not the use of Lean.
 classification:
@@ -37,9 +37,15 @@ sources:
       It is first presented by this work: Aristotle produced the construction and the Lean proof,
       and the informal account was written from that proof rather than the other way round.
       The Kourovka Notebook listed the problem as open until this solution was accepted into issue
-      21, and that its proposer accepted the construction on his own MathOverflow thread.
+      21, and its proposer accepted the construction on his own MathOverflow thread.
   - title: "Unsolved Problems in Group Theory. The Kourovka Notebook"
-    authors: ["Evgeny I. Khukhro", "Victor D. Mazurov"]
+    contributors:
+      - name: "Stefan Kohl"
+        role: "problem proposer"
+      - name: "Evgeny I. Khukhro"
+        role: "editor"
+      - name: "Victor D. Mazurov"
+        role: "editor"
     id: "arXiv:1401.0300v45"
     type: "paper"
     location: "Problem 18.50"
@@ -47,13 +53,10 @@ sources:
     license: "arXiv.org perpetual, non-exclusive license 1.0"
     author_endorsement: "endorsed"
     note: >
-      Problem 18.50 was proposed by Stefan Kohl. Khukhro and Mazurov are the editors of the
-      collection, not the author of the problem nor authors of its solution; v0.4 has no
-      `editors` field, so they appear under `authors`.
-
       The relationship is `other` rather than `background` because version 45 does more than
-      supply context: it both poses the problem and records the accepted solution. The closed
-      vocabulary has no category for a source that poses the problem a result answers.
+      supply context: it both poses the problem and records the accepted solution, and the
+      relationship vocabulary has no category for a source that poses the problem a result
+      answers.
 
       `author_endorsement` records the editors accepting this solution into issue 21. What a
       reader can check is the version 45 entry and the solution note in the Notebook's preprint

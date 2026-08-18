@@ -61,9 +61,6 @@ sources:                       # [required] list of sources
     license: "arXiv.org perpetual, non-exclusive license 1.0"
     author_endorsement: "endorsed"
     note: >
-      Khukhro and Mazurov edit this collection rather than author its problems.
-      Each problem has its own proposer, named in the Notebook.
-
       Version 45 contains the current problem statements and records the accepted
       solutions to Problems 3.46, 18.50, 19.25, 20.125, 21.8, 21.24, 21.147,
       and 21.150. Problem 21.149 now asks the strengthened question about
